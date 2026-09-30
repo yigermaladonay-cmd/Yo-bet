@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YO BET - Premier Sportsbook & Virtual Gaming Ethiopia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        yobet: {
+                            50: '#fff1f4',
+                            100: '#ffe4ea',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            900: '#881337',
+                            dark: '#0b0407',
+                            darker: '#060204',
+                            card: '#14080e',
+                            cardborder: '#2a121f',
+                            spribe: '#12080E',
+                            spribepanel: '#1b0d16',
+                            accent: '#ff2a5f',
+                            greenbtn: '#0ecb81',
+                            redbtn: '#f6465d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #060204; color: #f3f4f6; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0407; }
+        ::-webkit-scrollbar-thumb { background: #2a121f; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #f43f5e; }
+        .glow-red { text-shadow: 0 0 15px rgba(244, 63, 94, 0.7); }
+        .glow-box { box-shadow: 0 0 25px rgba(244, 63, 94, 0.15); }
+        .aviator-grid {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        .animate-pulse-glow { animation: pulseGlow 2s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-yobet-darker min-h-screen text-slate-100 flex flex-col selection:bg-yobet-500 selection:text-white pb-20 md:pb-0">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-yobet-dark/95 backdrop-blur border-b border-yobet-cardborder">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-6">
+                <a href="#" onclick="switchTab('sports')" class="flex items-center space-x-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yobet-700 to-yobet-500 flex items-center justify-center font-black text-2xl tracking-tighter text-white shadow-lg shadow-yobet-500/30 group-hover:scale-105 transition">
+                        YO
+                    </div>
+                    <div>
+                        <span class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-yobet-500 bg-clip-text text-transparent">YO BET</span>
+                        <span class="block text-[10px] uppercase font-bold text-yobet-500 tracking-widest -mt-1">Ethiopia</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm">
+                    <button onclick="switchTab('sports')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center space-x-2 active-nav" data-target="sports">
+                        <i class="fa-solid fa-futbol text-yobet-500"></i> <span>Sportsbook</span>
+                    </button>
+                    <button onclick="switchTab('aviator')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center space-x-2 relative" data-target="aviator">
+                        <i class="fa-solid fa-plane-up text-rose-500 animate-bounce"></i> <span class="font-bold text-rose-400">Aviator</span>
+                        <span class="absolute -top-1 -right-2 bg-rose-500 text-[9px] font-extrabold px-1.5 py-0.5 rounded-full text-white">HOT</span>
+                    </button>
+                    <button onclick="switchTab('virtuals')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center space-x-2" data-target="virtuals">
+                        <i class="fa-solid fa-gamepad text-amber-500"></i> <span>Virtual Games</span>
+                    </button>
+                    <button onclick="switchTab('casino')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center space-x-2" data-target="casino">
+                        <i class="fa-solid fa-dice text-purple-400"></i> <span>Live Casino</span>
+                    </button>
+                    <button onclick="switchTab('promotions')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center space-x-2" data-target="promotions">
+                        <i class="fa-solid fa-gift text-emerald-400"></i> <span>Promotions</span>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- WALLET & USER CONTROLS -->
+            <div class="flex items-center space-x-3">
+                <div class="hidden sm:flex flex-col items-end bg-yobet-card border border-yobet-cardborder px-3 py-1 rounded-xl">
+                    <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Balance (ETB)</span>
+                    <div class="flex items-center space-x-1.5">
+                        <span id="user-balance" class="font-bold text-emerald-400 text-sm">10,000.00</span>
+                        <button onclick="openDepositModal()" class="text-xs bg-yobet-500 hover:bg-yobet-600 text-white px-2 py-0.5 rounded font-bold transition">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Deposit
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="openDepositModal()" class="sm:hidden bg-yobet-500 text-white p-2 rounded-xl text-sm font-bold">
+                    <i class="fa-solid fa-wallet"></i>
+                </button>
+
+                <div class="relative">
+                    <button onclick="toggleUserMenu()" class="w-10 h-10 rounded-xl bg-yobet-card border border-yobet-cardborder flex items-center justify-center text-slate-300 hover:text-white hover:border-yobet-500 transition">
+                        <i class="fa-solid fa-user-circle text-lg text-yobet-500"></i>
+                    </button>
+                    <div id="user-menu" class="hidden absolute right-0 mt-2 w-56 bg-yobet-card border border-yobet-cardborder rounded-2xl shadow-2xl py-2 z-50">
+                        <div class="px-4 py-2 border-b border-yobet-cardborder">
+                            <p class="text-xs text-slate-400">Logged in as</p>
+                            <p class="text-sm font-bold text-white truncate">+251 99 568 8485</p>
+                            <p class="text-xs text-emerald-400 mt-1 font-semibold">Bonus: ETB 10,000.00</p>
+                        </div>
+                        <a href="#" onclick="openDepositModal(); closeUserMenu();" class="block px-4 py-2.5 text-sm text-slate-200 hover:bg-white/5"><i class="fa-solid fa-wallet w-6 text-yobet-500"></i> Deposit / Withdraw</a>
+                        <a href="#" onclick="switchTab('promotions'); closeUserMenu();" class="block px-4 py-2.5 text-sm text-slate-200 hover:bg-white/5"><i class="fa-solid fa-gift w-6 text-emerald-400"></i> Promotions & Bonus</a>
+                        <a href="#" onclick="alertBox('Service Center: Call our 24/7 support line directly at 0995688485'); closeUserMenu();" class="block px-4 py-2.5 text-sm text-slate-200 hover:bg-white/5"><i class="fa-solid fa-headset w-6 text-amber-400"></i> Support (0995688485)</a>
+                        <div class="border-t border-yobet-cardborder my-1"></div>
+                        <a href="#" onclick="alertBox('Signed out successfully'); closeUserMenu();" class="block px-4 py-2.5 text-sm text-rose-400 hover:bg-white/5"><i class="fa-solid fa-right-from-bracket w-6"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
+
+        <!-- 1. SPORTSBOOK TAB -->
+        <div id="tab-sports" class="tab-content space-y-6">
+            <!-- BANNER CAROUSEL -->
+            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-yobet-900 via-rose-950 to-yobet-dark border border-yobet-cardborder p-6 md:p-10 flex flex-col md:flex-row items-center justify-between shadow-2xl">
+                <div class="relative z-10 max-w-xl space-y-4 text-center md:text-left mb-6 md:mb-0">
+                    <span class="bg-yobet-500/20 border border-yobet-500/40 text-rose-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Ethiopia's #1 Betting Platform</span>
+                    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">GET <span class="text-yobet-500">10,000 ETB</span> WELCOME BONUS!</h1>
+                    <p class="text-slate-300 text-sm md:text-base">Place bets on Premier League, Champions League, Virtuals, and High-Graphics Aviator with instant cashout.</p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <button onclick="switchTab('aviator')" class="bg-gradient-to-r from-rose-600 to-yobet-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-rose-600/30 hover:scale-105 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-plane-up"></i> <span>Play Aviator Now</span>
+                        </button>
+                        <button onclick="openDepositModal()" class="bg-white/10 border border-white/20 text-white font-bold px-6 py-3 rounded-xl hover:bg-white/20 transition">
+                            Deposit ETB
+                        </button>
+                    </div>
+                </div>
+                <div class="relative z-10 w-48 md:w-72 h-40 md:h-56 bg-yobet-card border border-yobet-cardborder rounded-2xl flex flex-col items-center justify-center p-4 shadow-2xl animate-pulse-glow">
+                    <i class="fa-solid fa-plane-up text-6xl text-rose-500 mb-2"></i>
+                    <span class="text-xl font-black text-white">AVIATOR MULTIPLIER</span>
+                    <span class="text-3xl font-black text-emerald-400 mt-1">14.85x</span>
+                </div>
+            </div>
+
+            <!-- SPORTSBOOK MAIN LAYOUT -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Sports Categories Sidebar -->
+                <div class="lg:col-span-1 space-y-3">
+                    <div class="bg-yobet-card border border-yobet-cardborder rounded-2xl p-4">
+                        <h3 class="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-3">Popular Sports</h3>
+                        <div class="space-y-1">
+                            <button onclick="filterSport('football')" class="sport-cat-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-yobet-500/10 text-white font-semibold text-sm transition">
+                                <span class="flex items-center space-x-3"><i class="fa-solid fa-futbol text-yobet-500 w-5"></i> Football</span>
+                                <span class="text-xs bg-yobet-cardborder px-2 py-0.5 rounded-full text-slate-300">42</span>
+                            </button>
+                            <button onclick="filterSport('basketball')" class="sport-cat-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white font-medium text-sm transition">
+                                <span class="flex items-center space-x-3"><i class="fa-solid fa-basketball text-amber-500 w-5"></i> Basketball</span>
+                                <span class="text-xs bg-yobet-cardborder px-2 py-0.5 rounded-full text-slate-400">18</span>
+                            </button>
+                            <button onclick="filterSport('tennis')" class="sport-cat-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white font-medium text-sm transition">
+                                <span class="flex items-center space-x-3"><i class="fa-solid fa-baseball text-emerald-400 w-5"></i> Tennis</span>
+                                <span class="text-xs bg-yobet-cardborder px-2 py-0.5 rounded-full text-slate-400">12</span>
+                            </button>
+                            <button onclick="filterSport('esports')" class="sport-cat-btn w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-300 hover:text-white font-medium text-sm transition">
+                                <span class="flex items-center space-x-3"><i class="fa-solid fa-gamepad text-purple-400 w-5"></i> Esports</span>
+                                <span class="text-xs bg-yobet-cardborder px-2 py-0.5 rounded-full text-slate-400">24</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Virtuals Banner -->
+                    <div onclick="switchTab('virtuals')" class="bg-gradient-to-br from-amber-600/20 to-yobet-card border border-amber-500/30 rounded-2xl p-4 cursor-pointer hover:border-amber-500 transition group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Virtual Arena</span>
+                            <i class="fa-solid fa-arrow-right text-amber-400 group-hover:translate-x-1 transition"></i>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Horse, Dogs & Golden Race</h4>
+                        <p class="text-xs text-slate-400 mt-1">Instant 24/7 simulated racing & leagues with high odds.</p>
+                    </div>
+                </div>
+
+                <!-- Matches Feed & Live Odds -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center justify-between bg-yobet-card border border-yobet-cardborder px-4 py-3 rounded-2xl">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <h2 class="font-bold text-white text-sm uppercase tracking-wider">Live & Upcoming Matches</h2>
+                        </div>
+                        <div class="flex space-x-2 text-xs">
+                            <button class="bg-yobet-500 text-white font-bold px-3 py-1.5 rounded-lg">All</button>
+                            <button class="bg-white/5 text-slate-300 hover:text-white font-medium px-3 py-1.5 rounded-lg">Today</button>
+                        </div>
+                    </div>
+
+                    <div id="matches-container" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Betting Slip Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-20 bg-yobet-card border border-yobet-cardborder rounded-2xl p-4 shadow-xl">
+                        <div class="flex items-center justify-between pb-3 border-b border-yobet-cardborder">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-receipt text-yobet-500"></i>
+                                <h3 class="font-bold text-white text-sm">Bet Slip</h3>
+                            </div>
+                            <span id="slip-count" class="bg-yobet-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                        </div>
+
+                        <div id="slip-items" class="py-3 space-y-3 max-h-72 overflow-y-auto">
+                            <div class="text-center py-8 text-slate-500 text-sm">
+                                <i class="fa-solid fa-ticket text-3xl mb-2 opacity-30"></i>
+                                <p>Your bet slip is empty.<br>Click on any odds to add a selection.</p>
+                            </div>
+                        </div>
+
+                        <div id="slip-summary" class="hidden pt-3 border-t border-yobet-cardborder space-y-3">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>Total Odds:</span>
+                                <span id="slip-total-odds" class="font-bold text-white">1.00</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span>Stake (ETB):</span>
+                                <input type="number" id="slip-stake" value="100" min="10" class="w-24 bg-yobet-dark border border-yobet-cardborder rounded-lg px-2 py-1 text-right text-white font-bold focus:outline-none focus:border-yobet-500" oninput="updateSlipCalculations()">
+                            </div>
+                            <div class="flex justify-between text-sm font-bold text-slate-200">
+                                <span>Potential Payout:</span>
+                                <span id="slip-payout" class="text-emerald-400 font-extrabold text-base">ETB 0.00</span>
+                            </div>
+                            <button onclick="placeBet()" class="w-full bg-gradient-to-r from-yobet-600 to-yobet-500 hover:from-yobet-700 hover:to-yobet-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-yobet-500/30 transition">
+                                PLACE BET NOW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. AVIATOR TAB (SPRIBE HIGH-GRAPHICS STYLE) -->
+        <div id="tab-aviator" class="tab-content hidden space-y-6">
+            <div class="bg-yobet-spribe border border-yobet-cardborder rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Aviator Top Header bar -->
+                <div class="bg-yobet-spribepanel border-b border-yobet-cardborder px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex items-center space-x-1.5 bg-rose-500/20 border border-rose-500/40 px-3 py-1 rounded-xl">
+                            <i class="fa-solid fa-plane-up text-rose-500 animate-pulse"></i>
+                            <span class="font-extrabold text-white text-sm tracking-wide">AVIATOR <span class="text-rose-500">PRO</span></span>
+                        </div>
+                        <span class="text-xs text-slate-400 hidden sm:inline">Provably Fair Game</span>
+                    </div>
+
+                    <!-- Multiplier history pills -->
+                    <div id="aviator-history" class="flex items-center space-x-2 overflow-x-auto max-w-md py-1">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="openAviatorRules()" class="bg-white/5 hover:bg-white/10 text-slate-300 px-3 py-1.5 rounded-xl text-xs font-bold border border-white/10 transition">
+                            <i class="fa-solid fa-circle-question mr-1"></i> Rules
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canvas Game Arena -->
+                <div class="relative w-full h-[360px] md:h-[420px] bg-[#0d050a] aviator-grid overflow-hidden flex flex-col items-center justify-center">
+                    <!-- Star & Cloud canvas particles background -->
+                    <canvas id="aviator-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+                    <!-- Center State Display -->
+                    <div id="aviator-multiplier-display" class="relative z-10 text-center pointer-events-none">
+                        <h2 id="aviator-multiplier-text" class="text-6xl md:text-8xl font-black text-white glow-red tracking-tighter">1.00x</h2>
+                        <p id="aviator-status-text" class="text-rose-400 font-extrabold tracking-widest text-sm uppercase mt-2">WAITING FOR NEXT ROUND</p>
+                    </div>
+
+                    <!-- Live flight animated plane (SVG) -->
+                    <div id="aviator-plane-icon" class="absolute z-20 hidden transform -translate-x-1/2 -translate-y-1/2 transition-all duration-75">
+                        <svg class="w-24 h-24 text-rose-500 drop-shadow-[0_0_15px_rgba(244,63,94,0.8)] animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Dual Betting Panels -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 md:p-6 bg-yobet-spribepanel border-t border-yobet-cardborder">
+                    <!-- Panel 1 -->
+                    <div class="bg-yobet-card border border-yobet-cardborder rounded-2xl p-4 space-y-4 shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">Bet Panel 1</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-slate-400">Auto Bet</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="autobet-1" class="sr-only peer" onchange="toggleAutoBet(1)">
+                                    <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yobet-500"></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-slate-400 font-semibold uppercase">Stake (ETB)</span>
+                                <div class="flex items-center bg-yobet-dark border border-yobet-cardborder rounded-xl px-3 py-2">
+                                    <input type="number" id="stake-1" value="100" min="10" class="w-full bg-transparent text-white font-bold text-sm focus:outline-none">
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] text-slate-400 font-semibold uppercase">Auto Cash Out</span>
+                                    <input type="checkbox" id="autocash-toggle-1" class="accent-rose-500">
+                                </div>
+                                <div class="flex items-center bg-yobet-dark border border-yobet-cardborder rounded-xl px-3 py-2">
+                                    <input type="number" id="autocash-1" value="2.00" step="0.1" min="1.1" class="w-full bg-transparent text-white font-bold text-sm focus:outline-none">
+                                    <span class="text-xs text-slate-400 font-bold">x</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stake Buttons -->
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="setStake(1, 50)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">50</button>
+                            <button onclick="setStake(1, 100)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">100</button>
+                            <button onclick="setStake(1, 250)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">250</button>
+                            <button onclick="setStake(1, 500)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">500</button>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button id="btn-bet-1" onclick="handleAviatorAction(1)" class="w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-yobet-greenbtn hover:opacity-90 shadow-lg shadow-emerald-500/20 transition">
+                            BET (ETB 100)
+                        </button>
+                    </div>
+
+                    <!-- Panel 2 -->
+                    <div class="bg-yobet-card border border-yobet-cardborder rounded-2xl p-4 space-y-4 shadow-lg">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-300 uppercase tracking-wider">Bet Panel 2</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-slate-400">Auto Bet</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="autobet-2" class="sr-only peer" onchange="toggleAutoBet(2)">
+                                    <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yobet-500"></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <span class="text-[10px] text-slate-400 font-semibold uppercase">Stake (ETB)</span>
+                                <div class="flex items-center bg-yobet-dark border border-yobet-cardborder rounded-xl px-3 py-2">
+                                    <input type="number" id="stake-2" value="100" min="10" class="w-full bg-transparent text-white font-bold text-sm focus:outline-none">
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] text-slate-400 font-semibold uppercase">Auto Cash Out</span>
+                                    <input type="checkbox" id="autocash-toggle-2" class="accent-rose-500">
+                                </div>
+                                <div class="flex items-center bg-yobet-dark border border-yobet-cardborder rounded-xl px-3 py-2">
+                                    <input type="number" id="autocash-2" value="3.00" step="0.1" min="1.1" class="w-full bg-transparent text-white font-bold text-sm focus:outline-none">
+                                    <span class="text-xs text-slate-400 font-bold">x</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stake Buttons -->
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="setStake(2, 50)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">50</button>
+                            <button onclick="setStake(2, 100)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">100</button>
+                            <button onclick="setStake(2, 250)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">250</button>
+                            <button onclick="setStake(2, 500)" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-1.5 rounded-lg text-slate-300">500</button>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button id="btn-bet-2" onclick="handleAviatorAction(2)" class="w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-yobet-greenbtn hover:opacity-90 shadow-lg shadow-emerald-500/20 transition">
+                            BET (ETB 100)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. VIRTUAL GAMES TAB -->
+        <div id="tab-virtuals" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-amber-950 via-yobet-card to-yobet-dark border border-yobet-cardborder rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between shadow-2xl">
+                <div class="space-y-3 max-w-lg mb-4 md:mb-0">
+                    <span class="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">24/7 Virtual Arena</span>
+                    <h2 class="text-3xl font-extrabold text-white">Instant Simulated Racing & Sports</h2>
+                    <p class="text-slate-300 text-sm">Experience high-stakes virtual football leagues, horse racing, greyhound tracks, and penalty shootouts with live visual simulations.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="switchVirtualGame('football')" class="virtual-tab-btn bg-amber-500 text-yobet-dark font-bold px-4 py-2.5 rounded-xl text-xs transition">Virtual Football</button>
+                    <button onclick="switchVirtualGame('horses')" class="virtual-tab-btn bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">Horse Racing</button>
+                    <button onclick="switchVirtualGame('greyhounds')" class="virtual-tab-btn bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">Dog Racing</button>
+                    <button onclick="switchVirtualGame('penalty')" class="virtual-tab-btn bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">Penalty Shootout</button>
+                    <button onclick="switchVirtualGame('golden')" class="virtual-tab-btn bg-white/10 hover:bg-white/20 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">Golden Race</button>
+                </div>
+            </div>
+
+            <!-- VIRTUAL GAME DISPLAY CONTAINER -->
+            <div id="virtual-game-display" class="bg-yobet-card border border-yobet-cardborder rounded-3xl overflow-hidden shadow-2xl p-6">
+                <!-- Injected dynamically by switchVirtualGame -->
+            </div>
+        </div>
+
+        <!-- 4. CASINO TAB -->
+        <div id="tab-casino" class="tab-content hidden space-y-6">
+            <div class="text-center py-12 bg-yobet-card border border-yobet-cardborder rounded-3xl p-8 space-y-4 shadow-xl">
+                <i class="fa-solid fa-dice text-6xl text-purple-400 mb-2"></i>
+                <h2 class="text-3xl font-extrabold text-white">Live Casino & Table Games</h2>
+                <p class="text-slate-400 max-w-md mx-auto text-sm">Enjoy Blackjack, Roulette, Baccarat, and Mega Wheel with live dealers in stunning HD quality.</p>
+                <button onclick="switchTab('aviator')" class="bg-yobet-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-yobet-500/30 hover:scale-105 transition">
+                    Play Aviator Instead
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. PROMOTIONS TAB -->
+        <div id="tab-promotions" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gradient-to-br from-rose-950 to-yobet-card border border-rose-500/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <span class="bg-rose-500/20 text-rose-400 text-xs font-bold px-3 py-1 rounded-full uppercase">Welcome Offer</span>
+                    <h3 class="text-2xl font-black text-white">10,000 ETB Registration Bonus</h3>
+                    <p class="text-slate-300 text-sm">Sign up today on YO BET Ethiopia and receive an instant ETB 10,000 bonus credited directly to your gaming wallet.</p>
+                    <button onclick="openDepositModal()" class="bg-yobet-500 hover:bg-yobet-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition">Claim Bonus</button>
+                </div>
+                <div class="bg-gradient-to-br from-amber-950 to-yobet-card border border-amber-500/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <span class="bg-amber-500/20 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase">Cashback</span>
+                    <h3 class="text-2xl font-black text-white">15% Daily Aviator Cashback</h3>
+                    <p class="text-slate-300 text-sm">Get 15% cashback on all net losses in Aviator and Virtual Racing every single day credited by midnight.</p>
+                    <button onclick="switchTab('aviator')" class="bg-amber-500 text-yobet-dark font-bold px-5 py-2.5 rounded-xl text-sm transition">Play Aviator</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-yobet-dark/95 backdrop-blur border-t border-yobet-cardborder py-2 px-4 flex items-center justify-around">
+        <button onclick="switchTab('sports')" class="mobile-nav-btn flex flex-col items-center text-yobet-500" data-target="sports">
+            <i class="fa-solid fa-futbol text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Sports</span>
+        </button>
+        <button onclick="switchTab('aviator')" class="mobile-nav-btn flex flex-col items-center text-slate-400 hover:text-rose-500 relative" data-target="aviator">
+            <i class="fa-solid fa-plane-up text-lg text-rose-500 animate-bounce"></i>
+            <span class="text-[10px] font-semibold mt-1 text-rose-400">Aviator</span>
+        </button>
+        <button onclick="switchTab('virtuals')" class="mobile-nav-btn flex flex-col items-center text-slate-400" data-target="virtuals">
+            <i class="fa-solid fa-gamepad text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Virtuals</span>
+        </button>
+        <button onclick="switchTab('promotions')" class="mobile-nav-btn flex flex-col items-center text-slate-400" data-target="promotions">
+            <i class="fa-solid fa-gift text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Bonus</span>
+        </button>
+        <button onclick="openDepositModal()" class="flex flex-col items-center text-emerald-400">
+            <i class="fa-solid fa-wallet text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Deposit</span>
+        </button>
+    </nav>
+
+    <!-- DEPOSIT MODAL -->
+    <div id="deposit-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-yobet-card border border-yobet-cardborder rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl relative">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-wallet text-yobet-500"></i>
+                    <span>Deposit / Withdraw (ETB)</span>
+                </h3>
+                <button onclick="closeDepositModal()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-slate-400 uppercase">Select Payment Method</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="bg-yobet-500/20 border-2 border-yobet-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-mobile-screen text-yobet-500"></i> <span>TeleBirr / CBE</span>
+                        </button>
+                        <button class="bg-yobet-dark border border-yobet-cardborder text-slate-300 hover:text-white font-medium py-2.5 rounded-xl text-xs flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-building-columns"></i> <span>Bank Transfer</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-slate-400 uppercase">Amount (ETB)</label>
+                    <input type="number" id="deposit-amount" value="500" class="w-full bg-yobet-dark border border-yobet-cardborder rounded-xl px-4 py-3 text-white font-bold text-lg focus:outline-none focus:border-yobet-500">
+                </div>
+
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="document.getElementById('deposit-amount').value='100'" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-2 rounded-xl text-slate-300">100</button>
+                    <button onclick="document.getElementById('deposit-amount').value='500'" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-2 rounded-xl text-slate-300">500</button>
+                    <button onclick="document.getElementById('deposit-amount').value='1000'" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-2 rounded-xl text-slate-300">1000</button>
+                    <button onclick="document.getElementById('deposit-amount').value='5000'" class="bg-white/5 hover:bg-white/10 text-xs font-bold py-2 rounded-xl text-slate-300">5000</button>
+                </div>
+
+                <button onclick="processDeposit()" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 transition">
+                    CONFIRM DEPOSIT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM MESSAGE BOX MODAL -->
+    <div id="custom-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-yobet-card border border-yobet-cardborder rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-center">
+            <div class="w-14 h-14 bg-yobet-500/20 text-yobet-500 rounded-2xl flex items-center justify-center mx-auto text-2xl font-bold">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <h3 id="modal-title" class="text-lg font-bold text-white">YO BET Notification</h3>
+            <p id="modal-message" class="text-sm text-slate-300">Message content goes here.</p>
+            <button onclick="closeModal()" class="w-full bg-yobet-500 hover:bg-yobet-600 text-white font-bold py-2.5 rounded-xl transition">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC ENGINE -->
+    <script>
+        let userBalance = 10000.00;
+        let activeTab = 'sports';
+        let betSlip = [];
+
+        // --- MOCK SPORTS DATA ---
+        const matchesData = [
+            { id: 1, sport: 'football', league: 'English Premier League', home: 'Manchester United', away: 'Arsenal', time: 'Today, 19:30', odds1: 2.35, oddsX: 3.40, odds2: 2.90 },
+            { id: 2, sport: 'football', league: 'Spanish La Liga', home: 'Real Madrid', away: 'FC Barcelona', time: 'Today, 22:00', odds1: 2.10, oddsX: 3.50, odds2: 3.10 },
+            { id: 3, sport: 'football', league: 'UEFA Champions League', home: 'Bayern Munich', away: 'PSG', time: 'Tomorrow, 21:00', odds1: 1.85, oddsX: 3.80, odds2: 4.10 },
+            { id: 4, sport: 'basketball', league: 'NBA', home: 'LA Lakers', away: 'Golden State Warriors', time: 'Today, 04:00', odds1: 1.90, oddsX: 13.0, odds2: 1.95 },
+            { id: 5, sport: 'tennis', league: 'ATP US Open', home: 'Novak Djokovic', away: 'Carlos Alcaraz', time: 'Tomorrow, 16:00', odds1: 1.75, oddsX: 0, odds2: 2.05 }
+        ];
+
+        function initApp() {
+            renderMatches(matchesData);
+            initAviatorCanvas();
+            startAviatorLoop();
+            switchVirtualGame('football');
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            activeTab = tabId;
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('bg-white/10', 'text-white');
+                } else {
+                    btn.classList.remove('bg-white/10', 'text-white');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateBalanceDisplay() {
+            document.getElementById('user-balance').innerText = userBalance.toFixed(2);
+        }
+
+        function alertBox(msg, title="YO BET Ethiopia") {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = msg;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        function openDepositModal() {
+            document.getElementById('deposit-modal').classList.remove('hidden');
+        }
+
+        function closeDepositModal() {
+            document.getElementById('deposit-modal').classList.add('hidden');
+        }
+
+        function processDeposit() {
+            const amt = parseFloat(document.getElementById('deposit-amount').value);
+            if(isNaN(amt) || amt <= 0) {
+                alertBox('Please enter a valid deposit amount.');
+                return;
+            }
+            userBalance += amt;
+            updateBalanceDisplay();
+            closeDepositModal();
+            alertBox(`Successfully deposited ETB ${amt.toFixed(2)} to your account!`, 'Deposit Successful');
+        }
+
+        function toggleUserMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function closeUserMenu() {
+            document.getElementById('user-menu').classList.add('hidden');
+        }
+
+        // --- SPORTSBOOK LOGIC ---
+        function renderMatches(data) {
+            const container = document.getElementById('matches-container');
+            container.innerHTML = '';
+            data.forEach(m => {
+                container.innerHTML += `
+                    <div class="bg-yobet-card border border-yobet-cardborder rounded-2xl p-4 hover:border-yobet-500/50 transition">
+                        <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                            <span class="font-semibold text-yobet-500 uppercase tracking-wider">${m.league}</span>
+                            <span>${m.time}</span>
+                        </div>
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <div class="w-full md:w-1/2 space-y-1 text-center md:text-left">
+                                <p class="font-bold text-white text-base">${m.home}</p>
+                                <p class="text-xs text-slate-400">vs ${m.away}</p>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full md:w-auto">
+                                <button onclick="addToSlip('${m.home} vs ${m.away}', '1 (${m.home})', ${m.odds1})" class="bg-yobet-dark hover:bg-yobet-500/20 border border-yobet-cardborder rounded-xl p-2.5 text-center transition">
+                                    <span class="block text-[10px] text-slate-400 uppercase">1</span>
+                                    <span class="font-bold text-white text-sm">${m.odds1}</span>
+                                </button>
+                                ${m.oddsX > 0 ? `
+                                <button onclick="addToSlip('${m.home} vs ${m.away}', 'X (Draw)', ${m.oddsX})" class="bg-yobet-dark hover:bg-yobet-500/20 border border-yobet-cardborder rounded-xl p-2.5 text-center transition">
+                                    <span class="block text-[10px] text-slate-400 uppercase">X</span>
+                                    <span class="font-bold text-white text-sm">${m.oddsX}</span>
+                                </button>` : ''}
+                                <button onclick="addToSlip('${m.home} vs ${m.away}', '2 (${m.away})', ${m.odds2})" class="bg-yobet-dark hover:bg-yobet-500/20 border border-yobet-cardborder rounded-xl p-2.5 text-center transition">
+                                    <span class="block text-[10px] text-slate-400 uppercase">2</span>
+                                    <span class="font-bold text-white text-sm">${m.odds2}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterSport(sportName) {
+            document.querySelectorAll('.sport-cat-btn').forEach(btn => btn.classList.remove('bg-yobet-500/10', 'text-white'));
+            event.currentTarget.classList.add('bg-yobet-500/10', 'text-white');
+            const filtered = matchesData.filter(m => m.sport === sportName);
+            renderMatches(filtered.length ? filtered : matchesData);
+        }
+
+        function addToSlip(match, selection, odds) {
+            betSlip = [{ match, selection, odds }];
+            renderBetSlip();
+        }
+
+        function renderBetSlip() {
+            const container = document.getElementById('slip-items');
+            const summary = document.getElementById('slip-summary');
+            document.getElementById('slip-count').innerText = betSlip.length;
+
+            if(betSlip.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-slate-500 text-sm">
+                        <i class="fa-solid fa-ticket text-3xl mb-2 opacity-30"></i>
+                        <p>Your bet slip is empty.<br>Click on any odds to add a selection.</p>
+                    </div>
+                `;
+                summary.classList.add('hidden');
+                return;
+            }
+
+            summary.classList.remove('hidden');
+            container.innerHTML = '';
+            betSlip.forEach((item, idx) => {
+                container.innerHTML += `
+                    <div class="bg-yobet-dark border border-yobet-cardborder rounded-xl p-3 relative">
+                        <button onclick="betSlip.splice(${idx}, 1); renderBetSlip();" class="absolute top-2 right-2 text-slate-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                        <p class="text-[10px] text-yobet-500 font-bold">${item.match}</p>
+                        <p class="text-xs font-bold text-white mt-0.5">${item.selection}</p>
+                        <div class="flex justify-between items-center mt-2 pt-2 border-t border-yobet-cardborder text-xs">
+                            <span class="text-slate-400">Odds:</span>
+                            <span class="font-bold text-emerald-400">${item.odds}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            updateSlipCalculations();
+        }
+
+        function updateSlipCalculations() {
+            if(betSlip.length === 0) return;
+            const stake = parseFloat(document.getElementById('slip-stake').value) || 0;
+            const totalOdds = betSlip[0].odds;
+            document.getElementById('slip-total-odds').innerText = totalOdds.toFixed(2);
+            const payout = stake * totalOdds;
+            document.getElementById('slip-payout').innerText = `ETB ${payout.toFixed(2)}`;
+        }
+
+        function placeBet() {
+            const stake = parseFloat(document.getElementById('slip-stake').value) || 0;
+            if(stake <= 0) {
+                alertBox('Please enter a valid stake amount.');
+                return;
+            }
+            if(userBalance < stake) {
+                alertBox('Insufficient balance. Please deposit funds.');
+                return;
+            }
+            userBalance -= stake;
+            updateBalanceDisplay();
+            betSlip = [];
+            renderBetSlip();
+            alertBox('Bet placed successfully! Good luck!', 'Bet Confirmed');
+        }
+
+        // --- AVIATOR HIGH-GRAPHICS SIMULATOR ---
+        let aviatorState = 'WAITING'; // WAITING, FLYING, CRASHED
+        let aviatorMultiplier = 1.00;
+        let aviatorCrashAt = 2.00;
+        let aviatorTimer = 5.0;
+        let activeBets = { 1: { placed: false, cashed: false, stake: 100, target: 2.0 }, 2: { placed: false, cashed: false, stake: 100, target: 3.0 } };
+        let historyMultipliers = [1.24, 3.45, 1.05, 5.80, 2.10, 1.15, 12.40, 1.42, 2.65];
+
+        function initAviatorCanvas() {
+            const canvas = document.getElementById('aviator-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+
+            // Render particles
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            for(let i=0; i<30; i++) {
+                let x = (i * 47) % canvas.width;
+                let y = (i * 31) % canvas.height;
+                ctx.fillRect(x, y, 2, 2);
+            }
+        }
+
+        function renderAviatorHistory() {
+            const container = document.getElementById('aviator-history');
+            if(!container) return;
+            container.innerHTML = '';
+            historyMultipliers.slice(-8).reverse().forEach(m => {
+                let color = m >= 2.0 ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' : 'text-slate-300 bg-white/5 border-white/10';
+                container.innerHTML += `<span class="px-2.5 py-1 rounded-lg text-xs font-bold border ${color}">${m.toFixed(2)}x</span>`;
+            });
+        }
+
+        function setStake(panelId, amount) {
+            document.getElementById(`stake-${panelId}`).value = amount;
+        }
+
+        function toggleAutoBet(panelId) {
+            // Auto bet toggle logic
+        }
+
+        function handleAviatorAction(panelId) {
+            const stakeInput = document.getElementById(`stake-${panelId}`);
+            const btn = document.getElementById(`btn-bet-${panelId}`);
+            const stake = parseFloat(stakeInput.value);
+
+            if(!activeBets[panelId].placed) {
+                if(userBalance < stake) {
+                    alertBox('Insufficient balance for this bet.');
+                    return;
+                }
+                userBalance -= stake;
+                updateBalanceDisplay();
+                activeBets[panelId].placed = true;
+                activeBets[panelId].cashed = false;
+                activeBets[panelId].stake = stake;
+
+                btn.innerText = `CANCEL (ETB ${stake})`;
+                btn.className = 'w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-rose-600 hover:bg-rose-700 shadow-lg shadow-rose-600/20 transition';
+            } else if(aviatorState === 'FLYING' && !activeBets[panelId].cashed) {
+                // Cash out manually
+                activeBets[panelId].cashed = true;
+                let win = activeBets[panelId].stake * aviatorMultiplier;
+                userBalance += win;
+                updateBalanceDisplay();
+                alertBox(`Cashed out at ${aviatorMultiplier.toFixed(2)}x! Won ETB ${win.toFixed(2)}`, 'Cash Out Successful');
+
+                btn.innerText = `CASHED OUT (${win.toFixed(1)})`;
+                btn.className = 'w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-amber-500 opacity-60 cursor-not-allowed';
+            }
+        }
+
+        function startAviatorLoop() {
+            renderAviatorHistory();
+            setInterval(() => {
+                if(aviatorState === 'WAITING') {
+                    aviatorTimer -= 0.1;
+                    document.getElementById('aviator-multiplier-text').innerText = `NEXT IN ${aviatorTimer.toFixed(1)}s`;
+                    document.getElementById('aviator-status-text').innerText = 'PLACE YOUR BETS';
+                    document.getElementById('aviator-plane-icon').classList.add('hidden');
+
+                    if(aviatorTimer <= 0) {
+                        aviatorState = 'FLYING';
+                        aviatorMultiplier = 1.00;
+                        aviatorCrashAt = parseFloat((Math.random() * (Math.random() < 0.2 ? 1.5 : 8.0) + 1.1).toFixed(2));
+                        document.getElementById('aviator-plane-icon').classList.remove('hidden');
+
+                        // Check auto bets
+                        [1, 2].forEach(id => {
+                            const autoBetChecked = document.getElementById(`autobet-${id}`).checked;
+                            if(autoBetChecked && !activeBets[id].placed) {
+                                const stake = parseFloat(document.getElementById(`stake-${id}`).value);
+                                if(userBalance >= stake) {
+                                    userBalance -= stake;
+                                    updateBalanceDisplay();
+                                    activeBets[id].placed = true;
+                                    activeBets[id].cashed = false;
+                                    activeBets[id].stake = stake;
+                                }
+                            }
+                        });
+                    }
+                } else if(aviatorState === 'FLYING') {
+                    aviatorMultiplier += 0.03 * (aviatorMultiplier * 0.1 + 0.5);
+                    document.getElementById('aviator-multiplier-text').innerText = `${aviatorMultiplier.toFixed(2)}x`;
+                    document.getElementById('aviator-status-text').innerText = 'FLIGHT IN PROGRESS';
+
+                    // Check Auto Cash Out
+                    [1, 2].forEach(id => {
+                        const autoCashToggle = document.getElementById(`autocash-toggle-${id}`).checked;
+                        const autoCashTarget = parseFloat(document.getElementById(`autocash-${id}`).value);
+                        if(autoCashToggle && activeBets[id].placed && !activeBets[id].cashed && aviatorMultiplier >= autoCashTarget) {
+                            activeBets[id].cashed = true;
+                            let win = activeBets[id].stake * autoCashTarget;
+                            userBalance += win;
+                            updateBalanceDisplay();
+                            const btn = document.getElementById(`btn-bet-${id}`);
+                            btn.innerText = `AUTO CASH (${win.toFixed(1)})`;
+                            btn.className = 'w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-amber-500 opacity-60 cursor-not-allowed';
+                        }
+                    });
+
+                    // Update button states for manual players
+                    [1, 2].forEach(id => {
+                        if(activeBets[id].placed && !activeBets[id].cashed) {
+                            const btn = document.getElementById(`btn-bet-${id}`);
+                            let currentWin = activeBets[id].stake * aviatorMultiplier;
+                            btn.innerText = `CASH OUT (ETB ${currentWin.toFixed(1)})`;
+                            btn.className = 'w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-amber-500 hover:bg-amber-600 shadow-lg shadow-amber-500/20 transition animate-pulse';
+                        }
+                    });
+
+                    if(aviatorMultiplier >= aviatorCrashAt) {
+                        aviatorState = 'CRASHED';
+                        historyMultipliers.push(aviatorCrashAt);
+                        renderAviatorHistory();
+                        document.getElementById('aviator-status-text').innerText = `FALED / FLEW AWAY @ ${aviatorCrashAt.toFixed(2)}x`;
+                        document.getElementById('aviator-plane-icon').classList.add('hidden');
+
+                        // Reset bets
+                        [1, 2].forEach(id => {
+                            if(activeBets[id].placed && !activeBets[id].cashed) {
+                                const btn = document.getElementById(`btn-bet-${id}`);
+                                btn.innerText = `BET (ETB ${activeBets[id].stake})`;
+                                btn.className = 'w-full py-3.5 rounded-xl font-black text-white text-base tracking-wider bg-yobet-greenbtn hover:opacity-90 shadow-lg shadow-emerald-500/20 transition';
+                            }
+                            activeBets[id].placed = false;
+                            activeBets[id].cashed = false;
+                        });
+
+                        setTimeout(() => {
+                            aviatorTimer = 4.0;
+                            aviatorState = 'WAITING';
+                        }, 2500);
+                    }
+                }
+            }, 100);
+        }
+
+        // --- VIRTUAL GAMES SIMULATOR SUITE ---
+        function switchVirtualGame(gameType) {
+            document.querySelectorAll('.virtual-tab-btn').forEach(b => {
+                b.classList.remove('bg-amber-500', 'text-yobet-dark');
+                b.classList.add('bg-white/10', 'text-white');
+            });
+            event?.currentTarget?.classList?.remove('bg-white/10', 'text-white');
+            event?.currentTarget?.classList?.add('bg-amber-500', 'text-yobet-dark');
+
+            const container = document.getElementById('virtual-game-display');
+            if(gameType === 'football') {
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-yobet-cardborder pb-4">
+                            <h3 class="font-extrabold text-white text-lg"><i class="fa-solid fa-futbol text-amber-500 mr-2"></i> Virtual Football League</h3>
+                            <span class="text-xs bg-amber-500/20 text-amber-400 font-bold px-3 py-1 rounded-full">Matchday 24 / 38</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-5 text-center space-y-4">
+                                <div class="flex items-center justify-around">
+                                    <div class="space-y-1"><span class="font-bold text-white text-lg">Addis City FC</span><span class="block text-xs text-slate-400">Home</span></div>
+                                    <span class="text-2xl font-black text-amber-400">VS</span>
+                                    <div class="space-y-1"><span class="font-bold text-white text-lg">Hawassa United</span><span class="block text-xs text-slate-400">Away</span></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 pt-3 border-t border-yobet-cardborder">
+                                    <button onclick="alertBox('Virtual Football Bet Placed!')" class="bg-yobet-card hover:bg-amber-500/20 p-2.5 rounded-xl border border-yobet-cardborder text-center"><span class="text-[10px] text-slate-400 block">1</span><span class="font-bold text-white">1.95</span></button>
+                                    <button onclick="alertBox('Virtual Football Bet Placed!')" class="bg-yobet-card hover:bg-amber-500/20 p-2.5 rounded-xl border border-yobet-cardborder text-center"><span class="text-[10px] text-slate-400 block">X</span><span class="font-bold text-white">3.20</span></button>
+                                    <button onclick="alertBox('Virtual Football Bet Placed!')" class="bg-yobet-card hover:bg-amber-500/20 p-2.5 rounded-xl border border-yobet-cardborder text-center"><span class="text-[10px] text-slate-400 block">2</span><span class="font-bold text-white">3.60</span></button>
+                                </div>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-5 flex flex-col justify-center space-y-3">
+                                <h4 class="font-bold text-white text-sm">Live Simulator Engine</h4>
+                                <p class="text-xs text-slate-300">Simulations run every 90 seconds with instant algorithm outcomes and high definition graphics.</p>
+                                <button onclick="alertBox('Simulation started! Watch live scores.')" class="w-full bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold py-3 rounded-xl text-sm transition">START SIMULATION</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if(gameType === 'horses') {
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-yobet-cardborder pb-4">
+                            <h3 class="font-extrabold text-white text-lg"><i class="fa-solid fa-horse text-amber-500 mr-2"></i> Virtual Horse Racing Derby</h3>
+                            <span class="text-xs bg-amber-500/20 text-amber-400 font-bold px-3 py-1 rounded-full">Next Race in 45s</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">#1 Thunder Hooves</span>
+                                <p class="text-2xl font-black text-white">2.40</p>
+                                <button onclick="alertBox('Bet placed on #1 Thunder Hooves!')" class="w-full bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold py-2 rounded-xl text-xs">BET WIN</button>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">#2 Desert Storm</span>
+                                <p class="text-2xl font-black text-white">3.80</p>
+                                <button onclick="alertBox('Bet placed on #2 Desert Storm!')" class="w-full bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold py-2 rounded-xl text-xs">BET WIN</button>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">#3 Royal Gallop</span>
+                                <p class="text-2xl font-black text-white">5.20</p>
+                                <button onclick="alertBox('Bet placed on #3 Royal Gallop!')" class="w-full bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold py-2 rounded-xl text-xs">BET WIN</button>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">#4 Swift Shadow</span>
+                                <p class="text-2xl font-black text-white">7.50</p>
+                                <button onclick="alertBox('Bet placed on #4 Swift Shadow!')" class="w-full bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold py-2 rounded-xl text-xs">BET WIN</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if(gameType === 'greyhounds') {
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-yobet-cardborder pb-4">
+                            <h3 class="font-extrabold text-white text-lg"><i class="fa-solid fa-dog text-amber-500 mr-2"></i> Greyhound Racing Track</h3>
+                            <span class="text-xs bg-amber-500/20 text-amber-400 font-bold px-3 py-1 rounded-full">Race #884</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">Dog 1 - Fast Bullet</span>
+                                <p class="text-xl font-bold text-white">Odds: 2.10</p>
+                                <button onclick="alertBox('Greyhound bet placed!')" class="w-full bg-amber-500 text-yobet-dark font-bold py-2 rounded-xl text-xs">SELECT</button>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">Dog 2 - Midnight Runner</span>
+                                <p class="text-xl font-bold text-white">Odds: 3.40</p>
+                                <button onclick="alertBox('Greyhound bet placed!')" class="w-full bg-amber-500 text-yobet-dark font-bold py-2 rounded-xl text-xs">SELECT</button>
+                            </div>
+                            <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-4 text-center space-y-2">
+                                <span class="text-xs font-bold text-amber-400">Dog 3 - Silver Flash</span>
+                                <p class="text-xl font-bold text-white">Odds: 4.50</p>
+                                <button onclick="alertBox('Greyhound bet placed!')" class="w-full bg-amber-500 text-yobet-dark font-bold py-2 rounded-xl text-xs">SELECT</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if(gameType === 'penalty') {
+                container.innerHTML = `
+                    <div class="space-y-6 text-center max-w-xl mx-auto">
+                        <div class="border-b border-yobet-cardborder pb-4">
+                            <h3 class="font-extrabold text-white text-lg"><i class="fa-solid fa-futbol text-emerald-400 mr-2"></i> Penalty Shootout Challenge</h3>
+                            <p class="text-xs text-slate-400 mt-1">Choose where to strike the ball past the virtual goalkeeper!</p>
+                        </div>
+                        <div class="bg-yobet-dark border border-yobet-cardborder rounded-3xl p-8 space-y-6 shadow-xl">
+                            <div class="grid grid-cols-3 gap-3">
+                                <button onclick="alertBox('Goal scored! Multiplier 1.85x')" class="bg-yobet-card hover:bg-emerald-500/20 border border-yobet-cardborder p-6 rounded-2xl text-emerald-400 font-black text-lg transition">LEFT TOP (1.85x)</button>
+                                <button onclick="alertBox('Goal scored! Multiplier 2.10x')" class="bg-yobet-card hover:bg-emerald-500/20 border border-yobet-cardborder p-6 rounded-2xl text-emerald-400 font-black text-lg transition">CENTER (2.10x)</button>
+                                <button onclick="alertBox('Goal scored! Multiplier 1.85x')" class="bg-yobet-card hover:bg-emerald-500/20 border border-yobet-cardborder p-6 rounded-2xl text-emerald-400 font-black text-lg transition">RIGHT TOP (1.85x)</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if(gameType === 'golden') {
+                container.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-yobet-cardborder pb-4">
+                            <h3 class="font-extrabold text-white text-lg"><i class="fa-solid fa-trophy text-amber-400 mr-2"></i> Golden Race Virtual League</h3>
+                            <span class="text-xs bg-amber-500/20 text-amber-400 font-bold px-3 py-1 rounded-full">Top Tier Championship</span>
+                        </div>
+                        <div class="bg-yobet-dark border border-yobet-cardborder rounded-2xl p-6 text-center space-y-4">
+                            <h4 class="font-bold text-white text-base">Golden League Matchday Simulation</h4>
+                            <p class="text-slate-400 text-sm">Full 20-team round robin tournament simulation with live table standings and massive multiplier odds.</p>
+                            <button onclick="alertBox('Golden Race simulation loaded!')" class="bg-amber-500 hover:bg-amber-600 text-yobet-dark font-bold px-8 py-3 rounded-xl text-sm transition">ENTER GOLDEN ARENA</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        window.onload = function() {
+            initApp();
+        };
+    </script>
+</body>
+</html>
